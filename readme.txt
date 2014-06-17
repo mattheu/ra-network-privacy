@@ -2,8 +2,8 @@
 Contributors: wpmuguru, cgrymala, scribu
 Tags: privacy, plugin, wordpress, network 
 Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 0.1.4
+Tested up to: 3.9.1
+Stable tag: 0.1.5
 
 Adds more privacy options to both single Wordpress sites and WordPress networks.
 
@@ -44,6 +44,10 @@ Support can be obtained through:
 1. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 0.1.5 =
+* Remove use of get_settings() as that's now a deprecated method
+* Added global $current_site to login_header() to ensure it's available and also prevent warning when WP_DEBUG is on
 
 = 0.1.4 =
 * add 'ra_network_privacy_caps' filter
