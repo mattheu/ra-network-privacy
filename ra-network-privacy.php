@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name:   Network Privacy
-Version:       0.1.4
+Version:       0.1.5
 Description:   Adds more privacy options to Settings -> Privacy pages and when Network activated: Super Admin -> Options & Sites pages.
 Author:        Ron Rennick
 Author URI:    http://ronandandrea.com/
@@ -149,6 +149,7 @@ class RA_Network_Privacy {
 
 	// for logged in users to add timed "refresh"
 	function login_header() {
+		global $current_site;
 			nocache_headers();
 			header( 'Content-Type: text/html; charset=utf-8' );
 		?>
@@ -156,7 +157,7 @@ class RA_Network_Privacy {
 		<html xmlns="http://www.w3.org/1999/xhtml" <?php if ( function_exists('language_attributes') ) language_attributes(); ?>>
 			<head>
 				<title><?php _e("Private Blog Message", 'network-privacy'); ?></title>
-				<meta http-equiv="refresh" content="5;URL=<?php echo get_settings('siteurl'); ?>/wp-login.php" />
+				<meta http-equiv="refresh" content="5;URL=<?php echo get_option('siteurl'); ?>/wp-login.php" />
 				<?php wp_admin_css( 'css/login' );
 				wp_admin_css( 'css/colors-fresh' );	?>
 				<link rel="stylesheet" href="css/install.css" type="text/css" />
@@ -186,7 +187,7 @@ class RA_Network_Privacy {
 ?>
 					<form name="loginform" id="loginform">
 						<p><?php printf( __( 'Wait 5 seconds or
-							<a href="%s/wp-login.php">click</a> to continue.', 'network-privacy' ), get_settings('siteurl') ) ?></p>
+							<a href="%s/wp-login.php">click</a> to continue.', 'network-privacy' ), get_option('siteurl') ) ?></p>
 							<?php $this->privacy_login_message (); ?>
 					</form>
 				</div>
